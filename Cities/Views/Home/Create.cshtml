@@ -1,0 +1,26 @@
+﻿@model City
+
+@{ Layout = "_Layout";}
+
+<form method="post" asp-controller="Home" asp-action="Create" asp-antiforgery="true">
+    <div class="form-group">
+        <label asp-for="Name" >Name:</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <select class="form-control" asp-for="Country" asp-items="@new SelectList(Enum.GetValues(typeof(CountryNames)))">
+            <option disabled selected value="">Select a Country</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Population" >Population:</label>
+        <input asp-for="Population" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes"></label>
+        <textarea asp-for="Notes" class="form-control"></textarea>
+    </div>
+     <button type="submit" class="btn btn-primary">Add</button>
+     <button type="reset" class="btn btn-primary">Reset</button>
+     <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Cancel</a>
+</form>

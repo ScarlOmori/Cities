@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html> 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link asp-href-include="lib/bootstrap/dist/css/*.min.css" 
+          asp-href-exclude="**/*-reboot*, **/*-grid*" rel="stylesheet" />
+    <script asp-src-include="lib/jquery/dist/*.min.js" asp-append-version="true"></script>
+</head>
+<body class="m-1 p-1">
+    <cache expires-sliding="@TimeSpan.FromSeconds(10)" vary-by-route="action">
+        @await Component.InvokeAsync("Time")
+    </cache>
+    <div>
+        <img src="~/images/city.png" asp-append-version="true" style="width: 400px; height:500px"/>
+        @RenderBody()
+    </div>
+</body>
+</html>
